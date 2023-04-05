@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/270c520df2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/ficheConnaissance.css">
+    <title>SQL</title>
+</head>
+<body>
+
+        <div class="menu-haut bg row">
+            <div class="col-md-12 img ">
+                <center>
+                    <img class="logo" height="60" width="150" src="./assets/img/logo.png">
+                </center>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="menu-gauche bg">
+                <div class="icons ml-3 ">
+                    <a href="./home.html"><img class="mb-4 icon" width="40" src="./assets/img/home.svg"></a>
+                    <a href="./connaissances.html"><img class="mb-4 icon" width="40" src="./assets/img/book.svg"></a>
+                    <img class="mb-4 icon" width="40" src="./assets/img/project.svg">
+                    <img class="mb-4 icon" width="40" src="./assets/img/ressources.svg">
+                    <img class="mb-4 icon" width="40" src="./assets/img/out.svg">
+                </div>
+            </div>
+    <main>
+        <div class="row">
+            <h5 class="mt-4 ml-5"><a href="./categories.html">Catégories</a></h5> <p class="h5 mt-4 mx-2">-</p> <a class="menu-actif" href="./ficheCategorie.html"><h5 class="mt-4 ">Fiche catégorie (id)</h5></a>
+        </div>
+
+        <div class="containerInfo bg col-md-12">
+            <h3 class="mt-5">Fiche catégorie</h3>
+            <hr>
+            <div class="container mt-3">
+                <form>
+                    <div class="form-group">
+                      <label for="libelle">Libellé</label>
+                      <input type="text" class="form-control" id="libelle" placeholder="Entrez le libellé">
+                    </div>
+                    
+                    <a href="./categories.html" class="btn btnForm"><-- &nbsp; Annuler</a>
+                    <button type="button" class="btn btnForm" data-toggle="modal" data-target="#exampleModal">
+                        Supprimer
+                      </button>
+                    <button onclick="updateConnaissances()" type="submit" class="btn btnForm">Enregistrer</button>
+                </form>
+            </div>
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmation de suppression</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Si vous confirmer l'élément sera definitivement supprimé !
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btnForm" data-dismiss="modal">Annuler</button>
+          <button onclick="deleteCategorie()" type="button" class="btn btnForm">Confirmer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+    </main> 
+</body>
+</html>
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get('id');
+
+const urlAPIDelete = "http://localhost:5258/DeleteCategorie/" + id 
+
+function deleteCategorie() {
+    fetch(urlAPIDelete, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erreur de suppression');
+        }
+        console.log('Suppression réussie');
+        window.location.href = "./categories.html";
+      })
+      .catch(error => {
+        console.error('Erreur:', error);
+      });
+      window.location.href = "categories.html";
+
+} 
+
+const selectElement = document.getElementById('categorie');
+    fetch('http://localhost:5258/ReadAllCategories')
+    .then(response => {
+    if (!response.ok) {
+        throw new Error('Erreur de lecture');
+    }
+    return response.json();
+    })
+    .then(data => {
+    data.forEach(categorie => {
+        const optionElement = document.createElement('option');
+        optionElement.value = categorie.id;
+        optionElement.textContent = categorie.libelle;
+        selectElement.appendChild(optionElement);
+    });
+    })
+    .catch(error => {
+    console.error('Erreur:', error);
+    });
+
+function updateConnaissances() {
+    const dataToUpdate = {
+        idCategorie: id,
+        libelle: document.getElementById("libelle").value,
+      };
+      
+      fetch('http://localhost:5258/UpdateCategorie', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToUpdate)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erreur de mise à jour');
+        window.location.href = "categories.html";
+        }
+        window.location.href = "categories.html";
+      })
+      .catch(error => {
+        console.error('Erreur:', error);
+      });
+
+      window.location.href = "connaissances.html";
+
+      
+}
+
+const urlAPIGet = "http://localhost:5258/ReadCategorie/" + id 
+
+fetch(urlAPIGet)
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('libelle').value = data.libelle;
+  })
+  .catch(error => console.error(error));
+
+
+
+
+</script>

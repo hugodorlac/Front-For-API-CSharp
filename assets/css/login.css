@@ -1,0 +1,77 @@
+body {
+    margin:0;
+    padding:0;
+    background-image:   url(/assets/img/bg.jpg);
+    //background-repeat: no;
+    background-position: bottom center;
+}
+
+.container-form {
+    position: fixed;
+    background-color: #1A1B1D;
+    top: 18%;
+    width : 30.5%;
+    margin-left: 2rem;
+    height : 65%;
+    box-shadow: 10px 10px 10px #191919;
+}
+
+.autorisation {
+    color : #FFFFFF;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+
+.devotre {
+    color : #4D5965;
+    font-size: 2rem;
+}
+
+.compte {
+    color: #F24F0C;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.text-form {
+    position: fixed;
+    top: 30%;
+}
+
+.formAll {
+    background-color: rgb(26, 27, 29, 0.5) !important;
+    border-radius: 2rem !important;
+    border: 3px solid #2C3235 !important;
+    color: white !important;
+    height: 3rem !important;
+}
+
+.form {
+    position: relative;
+    top: 45%;
+}
+
+.btn-connexion {
+    background: #F24F0C;
+    color: white;
+    border-radius: 5rem;
+    padding: 3% 17%;
+}
+
+.btn-connexion2 {
+    background: #F24F0C;
+    color: white;
+    border-radius: 5rem;
+    padding: 0% 10%;
+}
+
+.lienBas {
+    color: white;
+    font-size: 0.7rem;
+    text-decoration: underline;
+}
+
+.lienBas:hover {
+    color: #F24F0C;
+}
