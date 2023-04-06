@@ -15,16 +15,13 @@
     <title>Connaissances</title>
 </head>
 <body>
-
-        <div class="menu-haut bg row">
-            <div align="center" class="col-md-12 img">
-                <img class="logo" height="60" width="210" src="./assets/img/logo.png">
-            </div>  
-        </div>
-        <div id="app" class="row">
-            <menu-gauche></menu-gauche>
-            <container-tableau titre="Connaissances" libelle="connaissance"></container-tableau>
-</body>
+  <div id="body">
+    <menu-haut></menu-haut>
+    </div>
+    <div id="app" class="row">
+        <menu-gauche></menu-gauche>
+        <container-tableau titre="Connaissances" libelle="connaissance"></container-tableau>  </div>
+  </body>
 </html>
 
 <script>
@@ -78,4 +75,6 @@
 </script>
 
 <script src="/assets/js/vue.js"></script>
-<script src="/assets/js/app.js"></script><
+<script src="/assets/js/components/menuHaut.js"></script>
+<script src="/assets/js/components/menuGauche.js"></script>
+<script src="/assets/js/components/containerTableau.js"></script>
