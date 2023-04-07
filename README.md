@@ -1,5 +1,7 @@
 # Front-end pour l'API REST C#
-Ce projet est un front-end pour l'API REST permettant de gérer les connaissances, projets et catégories d'une application interne à mon entreprise. Il utilise VueJS en utilisant le CDN pour fournir une interface utilisateur moderne et réactive.
+Ce projet est un front-end pour l'API REST permettant de gérer les connaissances, projets et catégories d'une application interne à mon entreprise. Il utilise VueJS en utilisant le CDN pour fournir une interface utilisateur moderne et réactive.  
+Voici le lien du github de l'API : https://github.com/hugodorlac/API-CSharp
+
 
 # Installation
 Il n'y a pas besoin d'installer Vue CLI pour ce projet, car il utilise le CDN de VueJS. Pour lancer l'application, il vous suffit de cloner le projet et d'ouvrir le fichier index.html dans votre navigateur web.
