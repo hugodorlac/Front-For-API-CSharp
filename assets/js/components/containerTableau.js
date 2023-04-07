@@ -7,8 +7,11 @@ Vue.component('container-tableau', {
     <main>
     <h5 class="mt-4 ml-5"><a class="menu-actif" href="./connaissances.html">{{ titre }}</a></h5>
     <div class="containerInfo pb-1 bg col-md-12">
-        <h3 class="mt-5">{{ titre }}</h3>
-        <hr>
+    <h3 class="mt-5">{{ titre }}</h3>
+    <hr>
+    <center>
+        <span class="loader"></span>
+    </center>
 
         <div class="container-fluid col-md-12">
             <div class="table-wrapper">
