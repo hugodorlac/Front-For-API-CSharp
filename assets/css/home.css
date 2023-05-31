@@ -1,0 +1,42 @@
+.containerInfo {
+    position: relative;
+    background-color: white;
+    left: 60%;
+    margin-top: 3.5rem;
+    height: auto;
+    border-radius: 10px 50px;
+    width: 40rem !important;
+}
+
+.count {
+    position: relative;
+    left: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counterDiv {
+    background-color: white;
+    height: auto;
+    width: 15rem;
+    padding: 1rem;
+    border-radius: 10px 50px;
+    margin-left: 1rem;
+}
+
+#Capa_1 {
+    fill: black;
+}
+
+.book {
+    fill: #f57445 !important;
+}
+
+.book:hover {
+    fill: black !important;
+}
+
+.help {
+    margin-top: -10rem;
+}

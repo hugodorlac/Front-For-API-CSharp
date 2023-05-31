@@ -32,9 +32,17 @@ Vue.component('container-tableau', {
                             <th>Libellé</th>
                             <th>Description courte</th>
                         </tr>
+                        
                         <tr v-else-if="libelle == 'catégorie'">
                             <th>ID</th>
                             <th>Libellé</th>
+                        </tr>
+                        
+                        <tr v-else-if="libelle == 'projet'">
+                            <th>ID</th>
+                            <th>Description</th>
+                            <th>Date de création</th>
+                            <th>Auteur</th>
                         </tr>
                     </thead>
                     <tbody>		
@@ -54,8 +62,7 @@ Vue.component('container-tableau', {
                         <div v-if="libelle === 'connaissance'" class="modal-body">					
                             <div class="form-group">
                                 <label for="select">Catégorie associée</label><br>
-                                <select id="categorie" class="form-select" aria-label="select">
-                                    <option selected>Pas de catégorie associée</option>
+                                <select required id="categorie" class="form-select" aria-label="select">
                                   </select>
                             </div>
                             <div class="form-group">
@@ -77,9 +84,13 @@ Vue.component('container-tableau', {
                                     <input id="libelle" type="text" class="form-control" required>
                                 </div>				
                             </div>
-                        <div class="modal-footer">
+                        <div v-if="libelle =='connaissance'" class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
                             <input onclick="createConnaissance()" type="submit" class="btn btn-color" value="Ajouter">
+                        </div>
+                        <div v-else-if="libelle = 'catégorie'" class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                            <input onclick="createCategorie()" type="submit" class="btn btn-color" value="Ajouter">
                         </div>
                     </form>
                 </div>

@@ -8,7 +8,7 @@ fetch('http://localhost:5258/ReadAllConnaissance')
       const row = connaissanceTableBody.insertRow();
       row.innerHTML = `
         <td onclick="move(${connaissance.idConnaissance})">${connaissance.idConnaissance}</td>
-        <td onclick="move(${connaissance.idConnaissance})">Catégorie Associée</td>
+          <td onclick="move(${connaissance.idConnaissance})">${connaissance.libelleCategorie}</td>
         <td onclick="move(${connaissance.idConnaissance})">${connaissance.libelle}</td>
         <td onclick="move(${connaissance.idConnaissance})">${connaissance.descriptionCourte}</td>
       `;
@@ -22,7 +22,23 @@ fetch('http://localhost:5258/ReadAllConnaissance')
 
 
   function createConnaissance() {
+
+    const selectElement = document.getElementById('categorie');
+    const selectValue = selectElement.value 
+    var selectedId = 0
+  
+  
+    for (let i = 0; i < selectElement.options.length; i++) {
+      const option = selectElement.options[i];
+      if (option.value === selectValue) {
+        selectedId = option.id;
+        console.log('ID de l\'option sélectionnée : ' + selectedId);
+        break;
+      }
+    }
+
     const dataToCreate = {
+        idCategorie: selectedId,
         libelle: document.getElementById("libelle").value,
         descriptionLongue: document.getElementById("descriptionLongue").value,
         descriptionCourte: document.getElementById("descriptionCourte").value,
@@ -46,3 +62,17 @@ fetch('http://localhost:5258/ReadAllConnaissance')
       });
       
   }
+
+  fetch('http://localhost:5258/ReadAllCategories')
+.then(response => response.json())
+.then(data => {
+  
+  const categorieSelect = document.getElementById('categorie');
+  data.forEach(categorie => {
+    var option = document.createElement("option");
+    option.text = categorie.libelle;
+    option.id = categorie.idCategorie;
+    categorieSelect.add(option);
+  });
+})
+.catch(error => console.error(error));

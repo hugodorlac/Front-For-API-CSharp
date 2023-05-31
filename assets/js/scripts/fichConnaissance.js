@@ -25,29 +25,39 @@ function deleteConnaissances() {
 
 } 
 
-const selectElement = document.getElementById('categorie');
-    fetch('http://localhost:5258/ReadAllCategories')
-    .then(response => {
-    if (!response.ok) {
-        throw new Error('Erreur de lecture');
-    }
-    return response.json();
-    })
-    .then(data => {
-    data.forEach(categorie => {
-        const optionElement = document.createElement('option');
-        optionElement.value = categorie.id;
-        optionElement.textContent = categorie.libelle;
-        selectElement.appendChild(optionElement);
-    });
-    })
-    .catch(error => {
-    console.error('Erreur:', error);
-    });
+fetch('http://localhost:5258/ReadAllCategories')
+.then(response => response.json())
+.then(data => {
+  
+  const categorieSelect = document.getElementById('categorieSelect');
+  data.forEach(categorie => {
+    var option = document.createElement("option");
+    option.text = categorie.libelle;
+    option.id = categorie.idCategorie;
+    categorieSelect.add(option);
+  });
+})
+.catch(error => console.error(error));
 
 function updateConnaissances() {
+
+  const selectElement = document.getElementById('categorieSelect');
+  const selectValue = selectElement.value 
+  var selectedId = 0
+
+
+  for (let i = 0; i < selectElement.options.length; i++) {
+    const option = selectElement.options[i];
+    if (option.value === selectValue) {
+      selectedId = option.id;
+      console.log('ID de l\'option sélectionnée : ' + selectedId);
+      break;
+    }
+  }
+
     const dataToUpdate = {
         idConnaissance: id,
+        idCategorie: selectedId,
         libelle: document.getElementById("libelle").value,
         descriptionLongue: document.getElementById("description_longue").value,
         descriptionCourte: document.getElementById("description_courte").value
@@ -81,11 +91,14 @@ const urlAPIGet = "http://localhost:5258/ReadConnaissance/" + id
 fetch(urlAPIGet)
   .then(response => response.json())
   .then(data => {
+    if(data.libelleCategorie != 'undefined') {
+    document.getElementById('categorieSelect').value = data.libelleCategorie;
     document.getElementById('libelle').value = data.libelle;
     document.getElementById('description_courte').value = data.descriptionCourte;
     document.getElementById('description_longue').value = data.descriptionLongue;
-  })
+    }})
   .catch(error => console.error(error));
+
 
 
 
