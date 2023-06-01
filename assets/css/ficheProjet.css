@@ -1,0 +1,21 @@
+.containerInfo {
+    width: 60rem;
+    margin-top: 0rem !important;
+    left: 30%;
+    height: auto;
+    padding-bottom: 2rem;
+
+}
+
+.container-relation {
+    position: relative;
+}
+
+
+.relation {
+    border-radius: 0;
+}
+
+#Capa_2 {
+    fill: black !important;
+}

@@ -33,17 +33,17 @@ Vue.component('container-tableau', {
                             <th>Description courte</th>
                         </tr>
                         
+                        <tr v-else-if="titre == 'Projets'">
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Date de création</th>
+                        </tr>
+
                         <tr v-else-if="libelle == 'catégorie'">
                             <th>ID</th>
                             <th>Libellé</th>
                         </tr>
                         
-                        <tr v-else-if="libelle == 'projet'">
-                            <th>ID</th>
-                            <th>Description</th>
-                            <th>Date de création</th>
-                            <th>Auteur</th>
-                        </tr>
                     </thead>
                     <tbody>		
                     </tbody>

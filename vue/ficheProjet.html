@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/270c520df2.js" crossorigin="anonymous"></script>
     <script src="../assets/js/scripts/auth.js"></script>
     <link rel="stylesheet" href="../assets/css/app.css">
-    <link rel="stylesheet" href="../assets/css/ficheCategorie.css">
+    <link rel="stylesheet" href="../assets/css/ficheProjet.css">
     <title>SQL</title>
 </head>
 <body >
@@ -22,20 +22,30 @@
         <menu-gauche></menu-gauche>
          <main>
         <div class="row">
-            <h5 class="mt-4 ml-5"><a href="./categories.html">Catégories</a></h5> <p class="h5 mt-4 mx-2">-</p> <a class="menu-actif" href="./ficheCategorie.html"><h5 class="mt-4 ">Fiche catégorie (id)</h5></a>
+            <h5 class="mt-4 ml-5"><a href="./projets.html">Projets</a></h5> <p class="h5 mt-4 mx-2">-</p> <a class="menu-actif" href="./ficheProjet.html"><h5 class="mt-4 ">Fiche catégorie (id)</h5></a>
         </div>
 
         <div class="containerInfo bg col-md-12">
-            <h3 class="mt-5">Fiche catégorie</h3>
+            <h3 class="mt-5 p-2">Fiche projet</h3>
             <hr>
             <div class="container mt-3">
                 <form>
                     <div class="form-group">
-                      <label for="libelle">Libellé</label>
+                      <label for="libelle">Nom</label>
                       <input type="text" class="form-control" id="libelle" placeholder="Entrez le libellé">
                     </div>
+
+                    <div class="form-group">
+                        <label for="libelle">Description</label>
+                        <input type="text" class="form-control" id="libelle" placeholder="Entrez le libellé">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="libelle">Date de création</label>
+                        <textarea class="form-control" type="date" class="form-control" id="libelle" placeholder="Entrez le libellé"></textarea>
+                      </div>
                     
-                    <a href="./categories.html" class="btn btnForm"><-- &nbsp; Annuler</a>
+                    <a href="./projets.html" class="btn btnForm"><-- &nbsp; Annuler</a>
                     <button type="button" class="btn btnForm" data-toggle="modal" data-target="#exampleModal">
                         Supprimer
                       </button>
@@ -62,6 +72,36 @@
       </div>
     </div>
   </div>
+        </div>
+        <div class="container-relation">
+            <h5 class="mt-4 ml-5"><a class="menu-actif" href="./connaissances.html">{{ titre }}</a></h5>
+            <div class="containerInfo relation pb-1 bg col-md-12">
+            
+            <center>
+                <span class="loader"></span>
+            </center>
+        
+                <div class="container-fluid col-md-12">
+                    <div class="table-wrapper">
+                        <div class="mt-1 table-title">
+                            Relations
+                        </div>
+                        <table id="table" class="table table-striped table-hover">
+                            <thead>
+                                <tr v-if="libelle == 'connaissance'">
+                                    <th>ID</th>
+                                    <th>Catégorie Associée</th>
+                                    <th>Libellé</th>
+                                    <th>Description courte</th>
+                                </tr>
+                            </thead>
+                            <tbody>		
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </main> 
 </body>
