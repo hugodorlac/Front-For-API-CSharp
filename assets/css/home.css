@@ -9,8 +9,9 @@
 }
 
 .count {
-    position: relative;
-    left: 20%;
+    position: fixed;
+    left: 27%;
+    top: 34%;
     display: flex;
     justify-content: center;
     align-items: center;

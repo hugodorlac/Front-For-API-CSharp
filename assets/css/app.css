@@ -19,9 +19,18 @@ hr {
     height: 8vh;
 }
 
+#app {
+   margin-left: 5rem;
+}
+
 .menu-gauche {
     height: auto;
     width: 6%;
+    position: fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
     
 }
 
@@ -43,8 +52,9 @@ td:hover {
 }
 
 .icons {
-    height: 93vh;
+    height: 100vh;
     display: flex;
+    
     flex-direction: column;
     justify-content: center;
     align-items: center;
