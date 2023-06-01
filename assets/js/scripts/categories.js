@@ -1,3 +1,5 @@
+
+
 fetch('http://localhost:5258/ReadAllCategories')
 .then(response => response.json())
 .then(data => {

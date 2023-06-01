@@ -9,6 +9,7 @@ Vue.component('menu-haut', {
             </div>  
         </div>
     `,
+    
   })
 
 var body = new Vue({
